@@ -6,10 +6,14 @@ import { CustomHeader } from "./shared/components/CustomHeader";
 import { SearchBar } from "./shared/components/SearchBar";
 
 export const GifsApp = () => {
-  const [previousTerms, setPreviousTerms] = useState(['totoro']);
-  
+  const [previousTerms, setPreviousTerms] = useState(["totoro"]);
+
   const handleTermClicked = (term: string) => {
     console.log(`Term clicked: ${term}`);
+  };
+
+  const handleSearch = (query: string) => {
+    console.log(query);
   };
 
   return (
@@ -21,13 +25,19 @@ export const GifsApp = () => {
       />
 
       {/* Search */}
-      <SearchBar placeholder="Busca lo que quieras"/>
+      <SearchBar
+        placeholder="Busca lo que quieras"
+        onQuery={handleSearch}
+      />
 
       {/* Búsquedas previas*/}
-      <PreviousSearches searches={previousTerms} onLabelClicked={handleTermClicked}/>
+      <PreviousSearches
+        searches={previousTerms}
+        onLabelClicked={handleTermClicked}
+      />
 
       {/* Gifs */}
-      <GifList gifs={mockGifs}/>
+      <GifList gifs={mockGifs} />
     </>
   );
 };
