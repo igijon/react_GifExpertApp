@@ -16,6 +16,7 @@ export const SearchBar = ({ placeholder = "Buscar", onQuery }: Props) => {
       //Cada vez que query cambie, quiero llamar a onQuery
       //cuando algo cambia, se ejecuta useEffect
       onQuery(query);
+      setQuery("");
     }, 700);
 
     return () => {

@@ -6,14 +6,19 @@ import { CustomHeader } from "./shared/components/CustomHeader";
 import { SearchBar } from "./shared/components/SearchBar";
 
 export const GifsApp = () => {
-  const [previousTerms, setPreviousTerms] = useState(["totoro"]);
+  const [previousTerms, setPreviousTerms] = useState([] as string[]);
 
-  const handleTermClicked = (term: string) => {
+  const handleTermClicked = (term: string = '') => {
     console.log(`Term clicked: ${term}`);
   };
 
   const handleSearch = (query: string) => {
-    console.log(query);
+    //Comprobar si query es vacío
+    query = query.trim().toLowerCase();
+    if (query.length === 0) return;
+    //Comprobar si el término ya existe en previousTerms  
+    if (previousTerms.includes(query)) return;
+    setPreviousTerms([query, ...previousTerms].splice(0, 7));
   };
 
   return (
