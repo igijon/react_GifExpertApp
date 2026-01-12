@@ -71,3 +71,14 @@ export default defineConfig([
   },
 ])
 ```
+
+## DevTools de React
+
+[DevTools de React ](https://react.dev/learn/react-developer-tools)
+
+En las opciones de desarrollo se activan opciones: Compnents y Profile.
+
+Esto nos permite ver el contexto de nuestra aplicación. Podemos ver de cada componente las properties y los hooks.
+
+En los hooks no es buena idea trabajar con condicionales.
+Los hooks dependen de la posición. Es mejor poner en primer lugar los que tienen que ver con UseState y después los que tienen que ver con efectos.
