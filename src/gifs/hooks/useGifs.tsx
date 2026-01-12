@@ -10,6 +10,7 @@ export const useGifs = () => {
   const [gifs, setGifs] = useState<Gif[]>([]);
   const [previousTerms, setPreviousTerms] = useState<string[]>([]);
 
+  //Con useRef mantenemos la referencia entre renderizados (no se pierde al hacer rerender)
   const gifsCache = useRef<Record<string, Gif[]>>({});
 
   const handleTermClicked = async (term: string = "") => {
