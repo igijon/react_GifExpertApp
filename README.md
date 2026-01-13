@@ -83,7 +83,11 @@ Esto nos permite ver el contexto de nuestra aplicación. Podemos ver de cada com
 En los hooks no es buena idea trabajar con condicionales.
 Los hooks dependen de la posición. Es mejor poner en primer lugar los que tienen que ver con UseState y después los que tienen que ver con efectos.
 
-# Servidores estáticos
+## Servidores estáticos
 
-(HTTP-Server)[https://www.npmjs.com/package/http-server]
-(Netlify)[https://www.netlify.com/]
+[HTTP-Server](https://www.npmjs.com/package/http-server)
+[Netlify](https://www.netlify.com/)
+
+## Despliegue en gh pages
+
+[https://igijon.github.io/react_GifExpertApp/](https://igijon.github.io/react_GifExpertApp/)
