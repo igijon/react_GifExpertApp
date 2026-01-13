@@ -17,12 +17,10 @@ export interface GiphyGif {
   title: string;
   rating: Rating;
   content_url: string;
-  source_tld: SourceTLD;
   source_post_url: string;
   source_caption: string;
   is_sticker: number;
   import_datetime: Date;
-  trending_datetime: TrendingDatetime;
   images: Images;
   user: User;
   analytics_response_payload: string;
@@ -64,23 +62,11 @@ export interface FixedHeight {
   hash?: string;
 }
 
-export enum Rating {
-  G = "g",
-}
+export type Rating = 'G';
 
-export enum SourceTLD {
-  Empty = "",
-  SPACartoonnetworklaCOM = "spa.cartoonnetworkla.com",
-  WWWPandaliebeDe = "www.pandaliebe.de",
-}
 
-export enum TrendingDatetime {
-  The00000000000000 = "0000-00-00 00:00:00",
-}
 
-export enum Type {
-  GIF = "gif",
-}
+export type Type = "gif";
 
 export interface User {
   avatar_url: string;
