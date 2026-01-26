@@ -1,12 +1,20 @@
-import { describe, expect, test } from 'vitest';
+import { afterEach, describe, expect, test } from 'vitest';
 import AxiosMockAdapter from 'axios-mock-adapter';
 
 import { getGifsByQuery } from './get-gifs-by-query.action';
 import {giphyApi} from '../api/giphy.api'
 import { giphySearchResponseMock } from '../../tests/mock/giphy.response.data';
+import { beforeEach } from 'node:test';
+import { log } from 'console';
+
 
 describe('getGifsByQuery', () => {
-    const mock = new AxiosMockAdapter(giphyApi);
+    let mock = new AxiosMockAdapter(giphyApi);
+
+    afterEach(() => {
+        mock = new AxiosMockAdapter(giphyApi);
+        //mock.reset(); //Resetea el mock antes de cada test.
+    });
     
     // test('should return a list of gifs', async () => {
     //     const gifs = await getGifsByQuery('One Punch');
@@ -37,6 +45,28 @@ describe('getGifsByQuery', () => {
             expect(typeof gif.width).toBe('number');
             expect(typeof gif.height).toBe('number');
         });
+        
+    });
+
+    test('should return an empty list of gifs if query is empty', async () => {
+        // mock.onGet('/search').reply(200, giphySearchResponseMock); //Va a devolv2er 200 y cualquier cosa como data.
+        //Esto que hemos hecho sobreescribirá la response real de la API.
+        mock.restore(); //Restauramos el mock para que haga la llamada real.
+
+        const gifs = await getGifsByQuery('');
+
+        expect(gifs.length).toBe(0);
+        
+    });
+
+    test('should handle error when the API returns an error', async () => {
+        mock.onGet('/search').reply(400, { //Bad Request
+            data: {
+                message: 'Bad Request'
+            }
+        }); //Simulamos un error 500.
+        const gifs = await getGifsByQuery('One Punch');
+        expect(gifs.length).toBe(0);
         
     });
 });
