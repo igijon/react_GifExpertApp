@@ -56,4 +56,6 @@ describe("SearchBar", () => {
     render(<SearchBar placeholder={placeHolder} onQuery={() => {}} />);
     expect(screen.getByPlaceholderText(placeHolder)).toBeDefined();
   });
+
+  //Nota: importante, npm run coverage para generar la cobertura.
 });
