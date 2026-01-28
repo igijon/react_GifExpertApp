@@ -1,7 +1,6 @@
 import { describe, expect, test, vi } from "vitest";
 import { SearchBar } from "./SearchBar";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { on } from "events";
 
 describe("SearchBar", () => {
   test("should render search bar correctly", () => {

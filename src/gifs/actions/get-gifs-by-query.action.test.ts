@@ -4,8 +4,6 @@ import AxiosMockAdapter from "axios-mock-adapter";
 import { getGifsByQuery } from "./get-gifs-by-query.action";
 import { giphyApi } from "../api/giphy.api";
 import { giphySearchResponseMock } from "../../tests/mock/giphy.response.data";
-import { beforeEach } from "node:test";
-import { log } from "console";
 
 describe("getGifsByQuery", () => {
   let mock = new AxiosMockAdapter(giphyApi);
